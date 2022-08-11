@@ -63,7 +63,7 @@ const persiste = async()=>{
 
 const leedata=async()=>{
   try {
-    data = JSON.parse(await fs.promises.readFile('./utils/productos.json',"utf-8"))
+    data = JSON.parse(await fs.promises.readFile('./utils/productos.json',"utf-8"), null, 2) //*
   }
   catch (error) {
     console.log("Archivo de productos no encontrado " + error);
