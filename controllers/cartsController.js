@@ -1,7 +1,5 @@
-//importo las funciones de carritos.js
 const carritos = require("../utils/carritos");
 
-//Declaro el controller 
 class Carts { 
   
   static createCart() {

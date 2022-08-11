@@ -1,33 +1,34 @@
+const fs = require("fs")
+
 const productos = require("./productos");
 
 const carts = [];
 let id = 0;
 
-//funcion que crea un carrito
+
 const create = () => {
   id ++ 
   let timestamp = new Date().getTime();
-  carts.push({id : id, timestamp: timestamp , products : []}) 
+  carts.push({id : id, timestamp: timestamp , products : []})
+  persiste(carts)
   return id
 } 
 
-//funcion que elimina un carrtio segun id
 const deleteById = (i) => {    
   let index = carts.findIndex(x => x.id == i) 
   if (index == -1) {
     return ({ error: 'Carrito no encontrado' })
   }  
   carts.splice(index, 1);
+  persiste(carts)
   return "Carrito Eliminado"  
 }
 
-//funcion que muestra el contenido de un carrito segun su ID
 const getById = (x) => {    
   if (carts.length === 0) {return ({"Error" : "No hay Carritos"})} 
   return (carts.find(el => el.id == x) || { error: 'Carrito no encontrado' })  
 }  
 
-//funcion para agregar porducto segun ID a un carrito segun su ID
 const addProduct = (idCarrito, idProducto) => {    
   if (carts.length === 0) {return ({"Error" : "No hay Carritos"})} 
 
@@ -43,11 +44,14 @@ const addProduct = (idCarrito, idProducto) => {
   } 
 
   carts[indexCart].products.push(products[indexProduct])
+
+  persiste(carts)
+
   return "Producto Agregado"
    
 }  
 
-//funcion para eliminar porducto segun ID a un carrito segun su ID
+
 const deletProduct = (idCarrito, idProducto) => {    
   if (carts.length === 0) {return ({"Error" : "No hay Carritos"})} 
 
@@ -62,10 +66,25 @@ const deletProduct = (idCarrito, idProducto) => {
     return ({ error: 'Producto no encontrado' })
   } 
 
-  carts[indexCart].products.splice(indexProduct, 1);  
+  carts[indexCart].products.splice(indexProduct, 1);
+
+  persiste(carts)
+
   return "Producto Eliminado"
    
 }  
 
+
+const persiste = async()=>{
+
+  try {
+    console.log(carts)
+    await fs.promises.writeFile("./utils/carritos.json", JSON.stringify(carts, null, 2))
+    
+  }
+  catch(error){
+    console.log(`Problemas al acceder al archivo ` + error)
+  }
+}
 
 module.exports = { create,  getById, deleteById, addProduct, deletProduct };

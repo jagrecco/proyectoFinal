@@ -1,7 +1,7 @@
-//importo las funciones de productos.js
+const fs=require("fs")
+
 const productos = require("../utils/productos");
 
-//Declaro el controller 
 class Products { 
   
   static getAll() {
@@ -11,6 +11,8 @@ class Products {
 
   static save(object) {
     const idProduct = productos.save(object);
+    productos.persiste(object)
+    
     return idProduct
   }
   
@@ -27,7 +29,9 @@ class Products {
   static changeById (x, object) {
     const data = productos.changeById(x, object);
     return data;
-  }     
+  }
+
+  
 
 } 
 
