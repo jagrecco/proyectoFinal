@@ -1,16 +1,17 @@
 const express = require('express');
-const router = require("./routes");
+const router = require("./routes"); // /routes/index.js
 const dotenv = require('dotenv')
 
 dotenv.config()
 
 const app = express();
 
-const port= process.env.PORT || 8080;
+const port = process.env.PORT || 8080;
 
 /* app.use(express.static(__dirname + "/public")); */
 app.use(express.json())
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({ extended: true }))
+
 app.use("/", router);
 
 app.listen(port, ()=>{

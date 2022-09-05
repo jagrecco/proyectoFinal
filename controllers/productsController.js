@@ -31,8 +31,6 @@ class Products {
     return data;
   }
 
-  
-
 } 
 
 module.exports = Products;
