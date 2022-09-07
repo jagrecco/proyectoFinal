@@ -3,6 +3,77 @@ const conexion = {
 
     archivo: { ruta: "./db" },
 
+    memoria: {
+        productos: [
+        {
+            nombre: 'Escuadra',
+            descripcion: 'Escuadra plástica',
+            precio: 890,
+            foto: 'https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png',
+            stock: 100,
+            codigo: 'AAB123',
+            timestamp: { _seconds: 1662331498, _nanoseconds: 907000000 },
+            id: 'XqolfwrM7sdqhcfL0d6B'
+        },
+        {
+            nombre: 'Cartuchera simple',
+            descripcion: 'Portalápices plástico clásico',
+            precio: 150,
+            foto: 'https://i.picsum.photos/id/119/3264/2176.jpg?hmac=PYRYBOGQhlUm6wS94EkpN8dTIC7-2GniC3pqOt6CpNU',
+            stock: 100,
+            codigo: '0A0B0C0D0',
+            timestamp: { _seconds: 1662331498, _nanoseconds: 907000000 },
+            id: 'fPU8XXr1u0tGljx8Mdpc'
+          
+        },
+        {
+            nombre: 'Acuarela',
+            descripcion: 'Acuarela 12 colores',
+            precio: 510,
+            foto: 'https://cdn3.iconfinder.com/data/icons/education-209/64/paint-color-pallete-brush-academy-256.png',
+            stock: 100,
+            codigo: 'AAB123',
+            timestamp: { _seconds: 1662345075, _nanoseconds: 982000000 },
+            id: 'kpFyf4XSSyx7uPNmxAtw'
+        },
+        {
+            nombre: 'Calculadora',
+            descripcion: 'Calculadora escolar',
+            precio: 255,
+            foto: 'https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png',
+            stock: 100,
+            codigo: 'AAB123',
+            timestamp: { _seconds: 1662344837, _nanoseconds: 65000000 },
+            id: 'lE827y8hGyw1YnEWG5vg'
+        },
+        {
+            nombre: 'Lápiz',
+            descripcion: 'Lápiz HB',
+            precio: 325,
+            codigo: 'AAB123',
+            timestamp: { _seconds: 1662344966, _nanoseconds: 749000000 },
+            foto: 'https://cdn3.iconfinder.com/data/icons/education-209/64/pencil-pen-stationery-school-128.png',
+            stock: 100,
+            id: 'mWJTaBOwuFArZs3d6hYX'
+        },
+        {
+            nombre: 'Cartuchera simple',
+            descripcion: 'Cartuchera plástica de 20cm',
+            precio: 150,
+            codigo: '000B000',
+            timestamp: { _seconds: 1662344966, _nanoseconds: 749000000 },
+            foto: 'https://i.picsum.photos/id/119/3264/2176.jpg?hmac=PYRYBOGQhlUm6wS94EkpN8dTIC7-2GniC3pqOt6CpNU',
+            stock: 100,
+            id: 'vF8hBEaaavlMa2wk4F2u'
+        }
+    ],
+
+    carrito: [
+
+    ]
+
+    },
+
     mongoDbCon: { dbURI : "mongodb://localhost/ecommerce" },
 
     firebase: {

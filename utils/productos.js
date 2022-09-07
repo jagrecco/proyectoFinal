@@ -11,7 +11,7 @@ const list = () => {
 
 const save = (object) => {
   id ++ 
-  let timestamp = new Date().getTime();     
+  let timestamp = new Date().getTime();
   object.id = id 
   object.timestamp = timestamp 
   data.push(object)
@@ -33,7 +33,7 @@ const getById = (x) => {
   }  
   data.splice(index, 1);
   persiste(data)
-  return "Producto Eliminado"  
+  return "Producto Eliminado"
 } 
 
 

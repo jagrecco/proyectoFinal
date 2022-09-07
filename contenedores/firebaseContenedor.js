@@ -1,6 +1,6 @@
 
 import admin from "firebase-admin";
-import { isProviderIdentifier } from "firebase-admin/lib/auth/identifier.js";
+/* import { isProviderIdentifier } from "firebase-admin/lib/auth/identifier.js"; */
 
 import conexion from "../config/config.js"
 
@@ -10,7 +10,7 @@ admin.initializeApp({
 });
 
 const db = admin.firestore();
-/* const query = db.collection("productos"); */
+/* const query = db.collection("productos"); */ // este era el error al guardar
 
 const prods=[]
 
@@ -22,51 +22,76 @@ class ContenedorFirebase{
     }
 
     async listarTodos(){
-        
-        const productos = (await this.collection.get()).docs
+        try {
 
-        productos.forEach((doc)=>{
-
-            const dato=doc.data()
-            dato.id=doc.id
-            prods.push (dato)
-
-        })
-        return prods;
+            const productos = (await this.collection.get()).docs
+    
+            productos.forEach((doc)=>{
+    
+                const dato=doc.data()
+                dato.id=doc.id
+                prods.push (dato)
+    
+            })
+            return prods;
+        }
+        catch (error) {
+            console.log("Error al acceder a productos " + error)
+        }
         
     }
 
     async listarUno(idProducto){
+        try{
+            const productos = await this.collection.doc(idProducto).get();
+            return productos.data();
 
-        const productos = await this.collection.doc(idProducto).get();
-        
-        return productos.data();
+        }
+        catch(error){
+            console.log("Error al acceder a productos " + error)
+        }
     }
 
     async guardarUno(objeto) {
+        try {
 
-        const res = await this.collection.add(objeto)
-        /* const prodNuevo=objeto
-        prodNuevo.id=res.id */
-        /* const prod = this.collection.doc()
-        await prod.push(objeto) */
+            const res = await this.collection.add(objeto)
+            objeto.id=res.id
+            return objeto;
+
+        }
+        catch (error) {
+            console.log("Error al guardar " + error);
+        }
         
-        return res;
     }
 
     async borrarUno(idProducto){
-        const productos = await ProdModel.deleteOne({_id: idProducto});
-        return productos;
+
+        try {
+            const res = await this.collection.doc(idProducto).delete();
+            return res;
+        }
+        catch(error) {
+            console.log(`Error al eliminar ${idProducto} ` + error)
+        }
+
     }
 
     async editaUno(idProducto, objeto) {
         
-        return ProdModel.findOneAndUpdate(idProducto, objeto,{new: true});
+        try {
+            const res = await this.collection.doc(idProducto).update(objeto);
+            return res;
+        }
+        catch(error) {
+            console.log(`Error al editar ${idProducto} ` + error)
+        }
         
     }
 
     async terminaConexion(){
-        await mongoose.connection.close()
+        /* await mongoose.connection.close() */
     }
 }
 

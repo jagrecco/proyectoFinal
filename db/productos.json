@@ -1,0 +1,12 @@
+[
+  {
+    "nombre": "Escuadra Mágica",
+    "descripcion": "Escuadra plástica magia",
+    "precio": 890,
+    "foto": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
+    "stock": 100,
+    "codigo": "AAB123",
+    "timestamp": 1662521399176,
+    "id": 1
+  }
+]

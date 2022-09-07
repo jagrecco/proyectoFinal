@@ -1,4 +1,3 @@
-/* import ContenedorMongo from "../contenedores/mongoDbContenedor" */
 
 import ContenedorMongo from "../contenedores/mongoDbContenedor.js"
 import ProdModel from "../models/productoSchema.js"
